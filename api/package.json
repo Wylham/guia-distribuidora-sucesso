@@ -1,0 +1,12 @@
+{
+  "type": "module",
+  "scripts": {
+    "dev:api": "node --watch api/server.js",
+    "start:api": "node api/server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.6.1",
+    "express": "^4.22.1"
+  }
+}
