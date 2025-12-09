@@ -19,9 +19,10 @@ import {
 } from "lucide-react";
 
 export default function App() {
+  const CHECKOUT_URL = "https://pay.abacatepay.com/link/SEU_LINK_AQUI";
+
   const handleCheckout = () => {
-    console.log("Iniciar fluxo de checkout (AbacatePay)");
-    // Futuro: integrar com AbacatePay aqui.
+    window.location.href = CHECKOUT_URL;
   };
 
   const logoSrc = "./GDS-GRADIENT-S.svg";
@@ -73,25 +74,41 @@ export default function App() {
 
               <div className="space-y-4">
                 <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-                  <a href="#checkout" className="inline-block w-full sm:w-auto">
-                    <Button
-                      onClick={handleCheckout}
-                      className="group relative overflow-hidden w-full sm:w-auto bg-gradient-to-r from-amber-400 via-amber-500 to-orange-500 hover:from-amber-300 hover:via-amber-400 hover:to-orange-400 text-black font-semibold text-sm sm:text-base px-6 sm:px-8 py-3 sm:py-3.5 rounded-full shadow-[0_0_40px_rgba(251,191,36,0.45)] hover:shadow-[0_0_60px_rgba(251,191,36,0.6)] transition-all duration-300 transform hover:-translate-y-1"
-                    >
-                      <span className="relative z-10 flex items-center justify-center gap-2">
-                        Quero começar agora
-                        <ArrowDown className="w-4 h-4 animate-bounce" />
-                      </span>
-                      <span className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    </Button>
-                  </a>
+                  <Button
+                    onClick={handleCheckout}
+                    className="
+                   inline-flex items-center justify-center gap-2
+                   w-full sm:w-auto
+                   group relative overflow-hidden
+                   bg-gradient-to-r from-amber-400 via-amber-500 to-orange-500
+                   hover:from-amber-300 hover:via-amber-400 hover:to-orange-400
+                   text-black font-semibold
+                   text-sm sm:text-base
+                   px-8 sm:px-10
+                   py-3.5 sm:py-4
+                   rounded-full
+                   shadow-[0_0_40px_rgba(251,191,36,0.5)]
+                   hover:shadow-[0_0_60px_rgba(251,191,36,0.7)]
+                   transition-all duration-300
+                   transform hover:-translate-y-1
+                   "
+                  >
+                    {/* texto centralizado */}
+                    <span className="relative z-10">Quero começar agora</span>
+
+                    {/* setinha animada ao lado, aparecendo de verdade */}
+                    <ArrowDown className="relative z-10 w-4 h-4 animate-bounce" />
+
+                    {/* brilho no hover */}
+                    <span className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  </Button>
 
                   <div className="text-xs sm:text-sm text-gray-400 flex items-center gap-2">
                     <Shield className="w-4 h-4 text-emerald-400" />
                     <span>Pagamento 100% seguro e acesso imediato</span>
                   </div>
                 </div>
-
+                <br />
                 <p className="text-xs sm:text-sm text-gray-400 mt-4 flex flex-col sm:flex-row sm:gap-3 gap-1">
                   <span className="flex items-center gap-1">
                     <Check className="w-3 h-3" /> Ideal para pequenas e médias
@@ -758,7 +775,7 @@ export default function App() {
 
       <section
         id="checkout"
-        className="py-12 sm:py-16 lg:py-20 border-t border-gray-900 animated-gradient-hero"
+        className="py-12 sm:py-16 lg:py-10 border-t border-gray-900 animated-gradient-hero"
       >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
           {/* LOGO REPETIDA NO CHECKOUT PARA REFORÇAR A MARCA */}
@@ -767,13 +784,13 @@ export default function App() {
               src="/GDS-GRADIENT-S.svg"
               alt="Guia da distribuidora de sucesso"
               className="
-        h-20 
-        sm:h-28 
-        lg:h-32 
-        w-auto 
-        drop-shadow-[0_0_25px_rgba(255,255,255,0.25)]
-        transition-all
-      "
+              h-20 
+              sm:h-28 
+              lg:h-32 
+              w-auto 
+              drop-shadow-[0_0_25px_rgba(255,255,255,0.25)]
+              transition-all
+              "
             />
           </div>
         </div>
@@ -800,10 +817,7 @@ export default function App() {
             </p>
           </div>
 
-          <a
-            href="#checkout"
-            className="inline-block w-full sm:w-auto mb-6 sm:mb-8"
-          >
+          <div className="w-full flex justify-center mb-6">
             <Button
               onClick={handleCheckout}
               className="group relative overflow-hidden w-full sm:w-auto bg-gradient-to-r from-amber-400 via-amber-500 to-orange-500 hover:from-amber-300 hover:via-amber-400 hover:to-orange-400 text-black font-semibold text-sm sm:text-base px-8 sm:px-10 py-3.5 sm:py-4 rounded-full shadow-[0_0_40px_rgba(251,191,36,0.5)] hover:shadow-[0_0_60px_rgba(251,191,36,0.7)] transition-all duration-300 transform hover:-translate-y-1"
@@ -811,21 +825,79 @@ export default function App() {
               <span className="relative z-10">Quero começar agora</span>
               <span className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </Button>
-          </a>
+          </div>
 
           <p className="text-xs sm:text-sm text-gray-400 flex flex-col sm:flex-row sm:gap-3 gap-1 justify-center">
             <span className="flex items-center gap-1">
               <Check className="w-3 h-3" /> Pagamento 100% seguro
             </span>
-            <span className="hidden sm:inline">•</span>
             <span className="flex items-center gap-1">
               <Check className="w-3 h-3" /> Acesso imediato
             </span>
-            <span className="hidden sm:inline">•</span>
             <span className="flex items-center gap-1">
               <Check className="w-3 h-3" /> Conteúdo digital
             </span>
           </p>
+          {/* Formas de pagamento */}
+          <div className="mt-6 flex flex-col items-center gap-3 text-gray-300">
+            <p className="text-sm opacity-80">Formas de pagamento aceitas:</p>
+
+            <div className="flex items-center gap-8">
+              {/* PIX */}
+              <div className="flex flex-col items-center gap-1">
+                <div className="p-3 rounded-full bg-white/5 border border-white/10 flex items-center justify-center">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                    <path fill="#4BB543" d="M12 2 2 12l10 10 10-10L12 2Z" />
+                    <path fill="#fff" d="M12 7 7 12l5 5 5-5-5-5Z" />
+                  </svg>
+                </div>
+                <span className="text-xs opacity-70">PIX</span>
+              </div>
+
+              {/* Cartão */}
+              <div className="flex flex-col items-center gap-1">
+                <div className="p-3 rounded-full bg-white/5 border border-white/10 flex items-center justify-center">
+                  <svg
+                    width="28"
+                    height="28"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#3B82F6"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <rect x="2" y="5" width="20" height="14" rx="2" ry="2" />
+                    <line x1="2" y1="10" x2="22" y2="10" />
+                  </svg>
+                </div>
+                <span className="text-xs opacity-70">Cartão</span>
+              </div>
+
+              {/* Boleto */}
+              <div className="flex flex-col items-center gap-1">
+                <div className="p-3 rounded-full bg-white/5 border border-white/10 flex items-center justify-center">
+                  <svg
+                    width="28"
+                    height="28"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#FBBF24"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <rect x="3" y="4" width="18" height="16" rx="2" ry="2" />
+                    <line x1="7" y1="4" x2="7" y2="20" />
+                    <line x1="11" y1="4" x2="11" y2="20" />
+                    <line x1="15" y1="4" x2="15" y2="20" />
+                    <line x1="19" y1="4" x2="19" y2="20" />
+                  </svg>
+                </div>
+                <span className="text-xs opacity-70">Boleto</span>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </div>
